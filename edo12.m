@@ -60,4 +60,4 @@ plot(t1c, yc, "ob", "markersize", 3)
 plot(t1a, xa, "og", "markersize", 3);
 hold off
 
-title('- Verm.: Exata; + Verm: Aprox. 0.1; * Ciano: Aprox. 0.05; O Azul: Aprox. 0.01; O Verde: Euler Melhorado');
+legend({'Exata', 'h=0.1', 'h=0.05', 'h=0.01', 'Euler Melhorado'}, 'Location', 'northwest');

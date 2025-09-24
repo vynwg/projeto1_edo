@@ -71,4 +71,4 @@ plot(t1b, yb, "c*", "markersize", 3)
 plot(t1c, yc, "ob", "markersize", 3)
 hold off
 
-title('- Verm.: Exata; + Verde: Aprox. 0.5; * Ciano: Aprox. 0.25; O Azul: Aprox. 0.01');
+legend({'Exata', 'h=0.5', 'h=0.25', 'h=0.01'}, 'Location', 'northwest');

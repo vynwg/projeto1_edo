@@ -1,11 +1,11 @@
 disp("Método de Runge-Kutta para resolução aproximada de EDOs:");
 disp("y' = 0.5 - t + 2y, t in (a, b]");
-disp("y(a) = 1");
+disp("y(a) = -1");
 
 clc
 clear all
 
-y0 = 1;
+y0 = -1;
 a  = 0;
 b  = 1;
 ha = 0.5;
@@ -28,7 +28,7 @@ yb(1)  = y0;
 yc(1)  = y0;
 
 for i = 1:N2
-    phi(i+1) = t2(i+1)/2 + exp(2*t2(i+1));
+    phi(i+1) = t2(i+1)/2 - exp(2*t2(i+1));
 end
 
 for i = 1:N1a
@@ -71,4 +71,4 @@ plot(t1b, yb, "c*", "markersize", 3)
 plot(t1c, yc, "ob", "markersize", 3)
 hold off
 
-title('- Verm.: Exata; + Verde: Aprox. 0.5; * Ciano: Aprox. 0.25; O Azul: Aprox. 0.01');
+legend('Exata', 'h=0.5', 'h=0.25', 'h=0.01');
