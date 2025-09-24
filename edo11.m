@@ -12,46 +12,45 @@ ha = 0.1;
 hb = 0.05;
 hc = 0.01;
 
-N1a = (b - a)/ha + 1;
-N1b = (b - a)/hb + 1;
-N1c = (b - a)/hc + 1;
-N2a = 10*(N1a-1) + 1;
-
+N1a = (b - a)/ha;
+N1b = (b - a)/hb;
+N1c = (b - a)/hc;
+N2  = 10*(N1a-1);
 
 phi(1) = y0;
-ya(1) = y0;
-xa(1) = y0;
-yb(1) = y0;
-yc(1) = y0;
+ya(1)  = y0;
+xa(1)  = y0;
+yb(1)  = y0;
+yc(1)  = y0;
+
+t1a = linspace(a, b, N1a+1);
+t1b = linspace(a, b, N1b+1);
+t1c = linspace(a, b, N1c+1);
+t2  = linspace(a, b, N2+1 );
 
 
-t1a(1) = a;
-t1b(1) = a;
-t1c(1) = a;
-t2(1) = a;
-
-
-for i = 1:N1a-1
-    t1a(i+1) = t1a(i) + ha;
-    ya(i+1) = ya(i) + (2*ya(i) - 1)*ha;
-    xa(i+1) = xa(i) + ((2*xa(i) - 1)+(2*ya(i+1) - 1))*ha/2;
-end
-
-for i = 1:N1b-1
-    t1b(i+1) = t1b(i) + hb;
-    yb(i+1) = yb(i) + (2*yb(i) - 1)*hb;
-end
-
-for i = 1:N1c-1
-    t1c(i+1) = t1c(i) + hc;
-    yc(i+1) = yc(i) + (2*yc(i) - 1)*hc;
-end
-
-for i = 1:N2a-1
-    t2(i+1) = t2(i) + 0.1*ha;
+for i = 1:N2
     phi(i+1) = 1/2 - 5/2*exp(2*t2(i+1));
 end
 
+for i = 1:N1a
+    t = t1a(i); y = ya(i); h = ha;
+
+    ya(i+1) = y + (2*y - 1)*h;
+    xa(i+1) = xa(i) + ((2*xa(i) - 1)+(2*ya(i+1) - 1))*h/2;
+end
+
+for i = 1:N1b
+    t = t1b(i); y = yb(i); h = hb;
+
+    yb(i+1) = y + (2*y - 1)*h;
+end
+
+for i = 1:N1c
+    t = t1c(i); y = yc(i); h = hc;
+
+    yc(i+1) = y + (2*y - 1)*h;
+end
 
 hold on
 plot(t2, phi,"-r")
